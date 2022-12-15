@@ -43,7 +43,7 @@ use lib "./../AoC-Common";
 
 our $aoc_year = 2022;
 our $use_live_data = 1;
-our $do_part_2 = 1;
+our $do_part_2 = 0;
 
 our @start_time;
 exit unless ( @ARGV );
@@ -70,11 +70,12 @@ if ( @ARGV ) {
 }
 
 do {
-    push @start_time, [Time::HiRes::gettimeofday()];
+    my $launch_time = [Time::HiRes::gettimeofday()];
+    push @start_time, $launch_time;
     unless (my $return = do $solution_file) {
         warn "$@" if $@;
     }
-    printf "Advent of Code %4u, Day %2u processing completed in %.6f ms.\n\n", $aoc_year, $challenge_day, Time::HiRes::tv_interval($start_time[0]) * 1_000;
+    printf "Advent of Code %4u, Day %u processing completed in %.6f ms.\n\n", $aoc_year, $challenge_day, Time::HiRes::tv_interval($launch_time, $start_time[$#start_time]) * 1_000;
     exit;
 } if ( -f $puzzle_data_file && -f $solution_file );
 

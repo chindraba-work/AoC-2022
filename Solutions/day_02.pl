@@ -86,7 +86,7 @@ foreach my $me (keys %me_play) {
 }
 report_number(1, $result);
 
-exit unless $main::do_part_2;
+return unless $main::do_part_2;
 # Part 2
 $result = 0;
 $plays = [

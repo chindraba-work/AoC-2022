@@ -62,7 +62,7 @@ foreach my $assignment (@pair_list) {
 }
 report_number(1, $result);
 
-exit unless $main::do_part_2;
+return unless $main::do_part_2;
 # Part 2
 sub sectionOverlap {
     my ($left_start, $left_end, $right_start, $right_end) = ( map { split /-/, $_; } split /,/, shift);

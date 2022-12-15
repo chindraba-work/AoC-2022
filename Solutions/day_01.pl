@@ -61,7 +61,8 @@ report_loaded;
 $result = $elf_totals[0];
 report_number(1, $result);
 
-exit unless $main::do_part_2;
+# exit unless $main::do_part_2;
+return unless $main::do_part_2;
 # Part 2
 $result = $elf_totals[0] + $elf_totals[1] + $elf_totals[2];
 report_number(2, $result);

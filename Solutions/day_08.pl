@@ -146,7 +146,7 @@ $result = sum( map { sum( @{$_} ); }(@{$visible}) );
 report_number(1, $result);
 
 
-exit unless $main::do_part_2;
+return unless $main::do_part_2;
 # Part 2
 my $forest;
 my $forest1;

@@ -68,7 +68,7 @@ $result = length $leader;
 
 report_number(1, $result);
 
-exit unless $main::do_part_2;
+return unless $main::do_part_2;
 # Part 2
 my $message = ($signal =~ m/^
     (.*?

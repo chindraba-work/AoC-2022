@@ -73,7 +73,7 @@ $result = join '', (map { substr($_,0,1); } @l );
 
 report_string(1, $result);
 
-exit unless $main::do_part_2;
+return unless $main::do_part_2;
 # Part 2
 @l = @stack;
 foreach (@l) {

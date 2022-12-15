@@ -77,7 +77,7 @@ report_number(1, $result);
 
 # perl -e '
 
-exit unless $main::do_part_2;
+return unless $main::do_part_2;
 sub badges {
     my @list;
     push @list, log(shift(@_) & shift(@_) & shift(@_))/log(2) while (scalar @_);
