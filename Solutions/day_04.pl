@@ -44,6 +44,10 @@ my $VERSION = '0.22.04';
 my $result;
 
 my @pair_list= read_lines $main::puzzle_data_file;
+
+report_loaded;
+
+# Part 1
 sub sectionCovered {
     my ($left_start, $left_end, $right_start, $right_end) = ( map { split /-/, $_; } split /,/, shift);
     return (
@@ -52,7 +56,6 @@ sub sectionCovered {
     );
 }
 
-# Part 1
 $result = 0;
 foreach my $assignment (@pair_list) {
     $result ++ if ( sectionCovered($assignment) );

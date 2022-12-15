@@ -92,8 +92,6 @@ sub dirSize {
     return $dir_size;
 }
 
-# Part 1
-my $curr_dir = undef;
 sub doCmd {
     my ($curr_dir, $cmd, $dir) = @_;
     return $curr_dir if ( 'ls' eq $cmd );
@@ -114,22 +112,26 @@ sub doCmd {
 sub addFiles {
     my ($p, $f, $s) = @_;
 }
+my $curr_dir = undef;
 LINE:
 for \my @tokens (@lines) {
     if ( '$' eq $tokens[0] )   { $curr_dir = doCmd( $curr_dir, @tokens[1, 2] ); next LINE; }
     if ( 'dir' eq $tokens[0] ) { $curr_dir = addDir( $curr_dir, $tokens[1] ); next LINE; }
     addFile( $curr_dir, @tokens[1,0] );
 }
+
+report_loaded;
+
+# Part 1
+
 my $fs_used = dirSize( $fs );
-$result = sum(@trap_list);
-report_number(1, $result);
+report_number(1, sum(@trap_list));
 
 exit unless $main::do_part_2;
 # Part 2
 $size_list = [sort {$a<=>$b} @{$size_list}];
 my $needed_space = 30_000_000 - (70_000_000 - $fs_used);
-$result = first { $_ >= $needed_space } @{$size_list};
-report_number(2, $result);
+report_number(2, first { $_ >= $needed_space } @{$size_list});
 
 
 1;

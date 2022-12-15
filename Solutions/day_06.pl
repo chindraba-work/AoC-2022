@@ -44,6 +44,10 @@ my $result;
 
 my $signal= (read_lines $main::puzzle_data_file)[0];
 
+report_loaded;
+
+# samples provided, uncomment the one to test
+
 #$signal = 'mjqjpqmgbljsphdztnvjfqwrcgsmlb'; # 7
 #$signal = 'bvwbjplbgvbhsrlpgdmjqwftvncz'; #: first marker after character 5
 #$signal = 'nppdvjthqldpwncqszvftbrmjlhg'; #: first marker after character 6
@@ -81,10 +85,11 @@ my $message = ($signal =~ m/^
     (.)(?!\2|\3|\4|\5|\6|\7|\8|\9|\10|\11|\12)
     (.)(?!\2|\3|\4|\5|\6|\7|\8|\9|\10|\11|\12|\13)
     (.)(?!\2|\3|\4|\5|\6|\7|\8|\9|\10|\11|\12|\13|\14)
-    (.)(?!\2|\3|\4|\5|\6|\7|\8|\9|\10|\11|\12|\13|\14|\15)
+#   (.)(?!\2|\3|\4|\5|\6|\7|\8|\9|\10|\11|\12|\13|\14|\15)
     (.)
     )/x
 )[0];
+
 $result = length $message;
 
 report_number(2, $result);

@@ -51,6 +51,10 @@ sub priority {
     return ord($_[0]) - ord("a") + ( ( $_[0] eq uc $_[0] ) ? 59 : 1 );
 }
 
+report_loaded;
+
+# Part 1
+#
 my @priors = map {
     my @chars = split //,$_;
     my $len = @chars;
@@ -68,7 +72,6 @@ my @priors = map {
     log($rv & $lv)/log(2);
 } @pack_list;
 
-# Part 1
 $result = sum(@priors);
 report_number(1, $result);
 

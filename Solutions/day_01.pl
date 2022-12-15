@@ -46,13 +46,17 @@ my $depth_index;
 
 my @food_list = read_lines $main::puzzle_data_file;
 my @elf_totals;
-# Part 1
 $result = 0;
 my $elf_num = 0;
 foreach my $calories (@food_list) {
     $elf_num ++ if '' eq $calories;
     $elf_totals[$elf_num] += $calories unless '' eq $calories;
 }
+
+report_loaded;
+
+# Part 1
+
 @elf_totals = sort { $b <=> $a } (@elf_totals);
 $result = $elf_totals[0];
 report_number(1, $result);

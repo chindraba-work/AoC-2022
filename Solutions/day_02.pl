@@ -70,6 +70,9 @@ my %me_play = (
     p => 1,
     s => 2,
 );
+
+report_loaded;
+
 # Part 1
 $result = 0;
 foreach my $play (@play_list) {

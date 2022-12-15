@@ -45,13 +45,19 @@ my $result;
 my $depth_index;
 
 my @move_list= read_lines $main::puzzle_data_file;
+my @stack;
 my @l;
+
 while (my $line = shift @move_list) {
     my $limit = int( length($line) / 4);
     foreach (0..$limit) {
-        $l[$_] .= substr($line,$_*4+1,1) unless (' ' eq substr($line,$_*4+1,1));
+        $stack[$_] .= substr($line,$_*4+1,1) unless (' ' eq substr($line,$_*4+1,1));
     }
 }
+
+report_loaded;
+
+@l = @stack;
 foreach (@l) {
     substr($_,-1,1,'');
 }
@@ -69,14 +75,7 @@ report_string(1, $result);
 
 exit unless $main::do_part_2;
 # Part 2
-@move_list= read_lines $main::puzzle_data_file;
-@l = ();
-while (my $line = shift @move_list) {
-    my $limit = int( length($line) / 4);
-    foreach (0..$limit) {
-        $l[$_] .= substr($line,$_*4+1,1) unless (' ' eq substr($line,$_*4+1,1));
-    }
-}
+@l = @stack;
 foreach (@l) {
     substr($_,-1,1,'');
 }
