@@ -43,6 +43,8 @@ use List::MoreUtils qw( first_index last_index );
 
 my $VERSION = '0.22.08';
 
+# Initialization
+
 my $result;
 my $trees;
 $trees = [ read_grid $main::puzzle_data_file ];
@@ -58,6 +60,10 @@ my $visible = [];
 for (0..$limit) {
     push @{$visible}, ( [ (0) x ($limit + 1) ] );
 }
+
+report_loaded;
+
+# Part 1
 for ( my $loop = 0; $loop <= $limit; $loop++ ) {
     my $band = $limit - $loop;
     for ( my $step = $loop; $step <= $limit; $step++ ) {
@@ -135,7 +141,6 @@ for ( my $loop = 0; $loop <= $limit; $loop++ ) {
     }
 }
 
-# Part 1
 $result = sum( map { sum( @{$_} ); }(@{$visible}) );
 
 report_number(1, $result);
