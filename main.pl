@@ -74,7 +74,7 @@ do {
     unless (my $return = do $solution_file) {
         warn "$@" if $@;
     }
-    printf "Advent of Code %4u, Day %2u processing completed in %.6f sec.\n\n", $aoc_year, $challenge_day, Time::HiRes::tv_interval($start_time[0]);
+    printf "Advent of Code %4u, Day %2u processing completed in %.6f ms.\n\n", $aoc_year, $challenge_day, Time::HiRes::tv_interval($start_time[0]) * 1_000;
     exit;
 } if ( -f $puzzle_data_file && -f $solution_file );
 
